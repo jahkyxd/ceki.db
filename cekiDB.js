@@ -1,5 +1,5 @@
-import { data, saveData } from "./Base/splash.js";
-import db from "./index.js";
+const { data, saveData } = require "./Base/splash";
+const db = require "./index";
 
 class cekiDB {
     get(key) {
@@ -86,4 +86,4 @@ class cekiDB {
     }
 }
 
-export default cekiDB;
+module.export = cekiDB;
