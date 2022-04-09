@@ -1,4 +1,5 @@
-const { data, saveData } = require("./Base/splash");
+import { data, saveData } from "./Base/splash.js";
+import db from "./index.js";
 
 class cekiDB {
     get(key) {
@@ -52,7 +53,12 @@ class cekiDB {
             );
         if (!isNaN(key)) throw TypeError("key isNaN! (data.add() isNaN key!)");
 
-        data[key] += count;
+        if (db.get(key)) {
+            data[key] += count
+        } else {
+            data[key] = count;
+        }
+
         saveData();
     }
 
@@ -80,4 +86,4 @@ class cekiDB {
     }
 }
 
-module.exports = cekiDB;
+export default cekiDB;
