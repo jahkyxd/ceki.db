@@ -25,3 +25,6 @@ cekiDB.push()
 ```
 
 methodlarını kullanabilirsiniz.
+
+
+ES modül tipini kullanan arkadaşlar [Burada](https://github.com/jahkyxd/ceki.db/tree/ceki.db-ES) ona uygun projeyi indirebilirler.
