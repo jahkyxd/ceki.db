@@ -26,7 +26,7 @@ class cekiDB {
                 "data to be extracted is not specified! (data.set() undefined data!)"
             );
 
-        if (!value)
+        if (value === null || value === undefined)
             throw TypeError(
                 "value to set is not specified! (data.set() undefined value!)"
             );
@@ -47,7 +47,7 @@ class cekiDB {
     add(key, count) {
         if (!key)
             throw TypeError("No key to be added! (data.add() undefined key!)");
-        if (!count)
+        if (count === null || count === undefined)
             throw TypeError(
                 "no value specified! (data.add() undefined value!)"
             );
@@ -67,18 +67,22 @@ class cekiDB {
             throw TypeError(
                 "No data to be added! (data.subtrack() undefined data!)"
             );
-        if (!count)
+        if (count === null || count === undefined)
             throw TypeError(
                 "no value specified! (data.subtrack() undefined value!)"
             );
 
-        data[key] -= count;
+            if (db.get(key)) {
+                data[key] -= count
+            } else {
+                data[key] = count;
+            }
         saveData();
     }
 
     push(key, elements) {
         if (!key) throw TypeError("No data to add value specified! ");
-        if (!elements) throw TypeError("Eklenecek değer belirtilmemiş!");
+        if (!elements) throw TypeError("No value to be added!");
 
         if (!data[key]) data[key] = [];
         data[key].push(elements);
