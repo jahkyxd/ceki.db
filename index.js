@@ -1,4 +1,4 @@
-const data = require("./cekiDB");
+import data from "./cekiDB.js";
 const cekiDB = new data();
 
-module.exports = cekiDB;
+export default cekiDB;

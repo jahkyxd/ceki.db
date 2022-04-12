@@ -1,7 +1,6 @@
-const fs = require("fs");
+import fs from "fs";
 
-const json = "cekiDB.json"
-
+const json = "./src/jsons/database/cekiDB.json";
 
 var data = {};
 
@@ -14,11 +13,10 @@ if (!fs.existsSync(json)) {
 async function fetchData() {
     const savedData = JSON.parse(fs.readFileSync(json));
     data = savedData;
-
 }
 
 async function saveData() {
     fs.writeFileSync(json, JSON.stringify(data, null, 2), "utf-8");
 }
 
-module.exports = { data, fetchData, saveData }
+export { data, fetchData, saveData };
