@@ -1,6 +1,6 @@
 import fs from "fs";
 
-const json = "./src/jsons/database/cekiDB.json";
+const json = "cekiDB.json";
 
 var data = {};
 
