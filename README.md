@@ -5,7 +5,7 @@ fast json database module
 modülü kullanmak için:
 
 ```js
-const cekiDB = require("./index");
+import cekiDB from "./index.js";
 ```
 
 olarak modülü tanımlayın daha sonra
