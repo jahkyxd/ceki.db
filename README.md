@@ -27,3 +27,5 @@ db.push()
 ```
 
 methodlarını kullanabilirsiniz.
+
+**modülün npm sayfasına [buradan](https://www.npmjs.com/package/ceki.db) ulaşabilirsiniz.**
