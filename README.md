@@ -4,24 +4,26 @@ fast json database module
 
 modülü kullanmak için:
 
+``npm install ceki.db`` yazısını terminale yazın.
+
 ```js
-import cekiDB from "./index.js";
+const db = require("ceki.db")
 ```
 
 olarak modülü tanımlayın daha sonra
 
 ```js
-cekiDB.get()
+db.get()
 
-cekiDB.set()
+db.set()
 
-cekiDB.delete()
+db.delete()
 
-cekiDB.add()
+db.add()
 
-cekiDB.subtrack()
+db.subtrack()
 
-cekiDB.push()
+db.push()
 ```
 
 methodlarını kullanabilirsiniz.
