@@ -2,7 +2,7 @@ import { data, saveData } from "./Base/splash.js";
 import db from "./index.js";
 
 class cekiDB {
-    get(key) {
+    async get(key) {
         if (!key)
             throw TypeError(
                 "data to be extracted is not specified! (data.get() undefined data!)"
@@ -11,7 +11,7 @@ class cekiDB {
         return data[key];
     }
 
-    has(key) {
+    async has(key) {
         if (!key)
             throw TypeError(
                 "data to be extracted is not specified! (data.has() undefined data!)"
@@ -20,7 +20,7 @@ class cekiDB {
         return Boolean(data[key]);
     }
 
-    set(key, value) {
+    async set(key, value) {
         if (!key)
             throw TypeError(
                 "data to be extracted is not specified! (data.set() undefined data!)"
@@ -35,7 +35,7 @@ class cekiDB {
         saveData();
     }
 
-    delete(key) {
+    async delete(key) {
         if (!key)
             throw TypeError(
                 "data to be deleted is not specified! (data.delete() undefined data!)"
@@ -44,7 +44,7 @@ class cekiDB {
         saveData();
     }
 
-    add(key, count) {
+    async add(key, count) {
         if (!key)
             throw TypeError("No key to be added! (data.add() undefined key!)");
         if (count === null || count === undefined)
@@ -54,7 +54,7 @@ class cekiDB {
         if (!isNaN(key)) throw TypeError("key isNaN! (data.add() isNaN key!)");
 
         if (db.get(key)) {
-            data[key] += count
+            data[key] += count;
         } else {
             data[key] = count;
         }
@@ -62,7 +62,7 @@ class cekiDB {
         saveData();
     }
 
-    subtrack(key, count) {
+    async subtrack(key, count) {
         if (!key)
             throw TypeError(
                 "No data to be added! (data.subtrack() undefined data!)"
@@ -72,21 +72,31 @@ class cekiDB {
                 "no value specified! (data.subtrack() undefined value!)"
             );
 
-            if (db.get(key)) {
-                data[key] -= count
-            } else {
-                data[key] = count;
-            }
+        if (db.get(key)) {
+            data[key] -= count;
+        } else {
+            data[key] = count;
+        }
         saveData();
     }
 
-    push(key, elements) {
+    async push(key, elements) {
         if (!key) throw TypeError("No data to add value specified! ");
         if (!elements) throw TypeError("No value to be added!");
 
         if (!data[key]) data[key] = [];
         data[key].push(elements);
         saveData();
+    }
+
+    async pull(key, elements) {
+        if (!key) throw TypeError("No data to pull value specified! ");
+        if (!elements) throw TypeError("No value to withdraw!");
+        if (!data[key]) throw TypeError("There is no such key");
+        if (!Array.isArray(data[key]))
+            throw TypeError("The data is not a array!");
+        const newData = data[key].filter((x) => x !== elements);
+        this.set(key, newData);
     }
 }
 
