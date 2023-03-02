@@ -97,6 +97,7 @@ class cekiDB {
             throw TypeError("The data is not a array!");
         const newData = data[key].filter((x) => x !== elements);
         this.set(key, newData);
+	saveData();
     }
 }
 
