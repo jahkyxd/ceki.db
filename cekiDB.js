@@ -2,7 +2,7 @@ import { data, saveData } from "./Base/splash.js";
 import db from "./index.js";
 
 class cekiDB {
-    async get(key) {
+    get(key) {
         if (!key)
             throw TypeError(
                 "data to be extracted is not specified! (data.get() undefined data!)"
@@ -11,7 +11,7 @@ class cekiDB {
         return data[key];
     }
 
-    async has(key) {
+    has(key) {
         if (!key)
             throw TypeError(
                 "data to be extracted is not specified! (data.has() undefined data!)"
@@ -20,7 +20,7 @@ class cekiDB {
         return Boolean(data[key]);
     }
 
-    async set(key, value) {
+    set(key, value) {
         if (!key)
             throw TypeError(
                 "data to be extracted is not specified! (data.set() undefined data!)"
@@ -35,7 +35,7 @@ class cekiDB {
         saveData();
     }
 
-    async delete(key) {
+    delete(key) {
         if (!key)
             throw TypeError(
                 "data to be deleted is not specified! (data.delete() undefined data!)"
@@ -44,7 +44,7 @@ class cekiDB {
         saveData();
     }
 
-    async add(key, count) {
+    add(key, count) {
         if (!key)
             throw TypeError("No key to be added! (data.add() undefined key!)");
         if (count === null || count === undefined)
@@ -62,7 +62,7 @@ class cekiDB {
         saveData();
     }
 
-    async subtrack(key, count) {
+    subtrack(key, count) {
         if (!key)
             throw TypeError(
                 "No data to be added! (data.subtrack() undefined data!)"
@@ -80,7 +80,7 @@ class cekiDB {
         saveData();
     }
 
-    async push(key, elements) {
+    push(key, elements) {
         if (!key) throw TypeError("No data to add value specified! ");
         if (!elements) throw TypeError("No value to be added!");
 
@@ -89,7 +89,7 @@ class cekiDB {
         saveData();
     }
 
-    async pull(key, elements) {
+    pull(key, elements) {
         if (!key) throw TypeError("No data to pull value specified! ");
         if (!elements) throw TypeError("No value to withdraw!");
         if (!data[key]) throw TypeError("There is no such key");
